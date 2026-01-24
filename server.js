@@ -2,24 +2,25 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
+
+// Middleware
 app.use(express.json());
 
-// 🔗 MongoDB Connection
-mongoose.connect(process.env.MONGO_URI)
+// Home route (test)
+app.get("/", (req, res) => {
+  res.send("🎮 Game Zone Tournaments Server Running");
+});
+
+// MongoDB connection
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("✅ MongoDB Connected Successfully");
+    console.log("MongoDB connected");
   })
-  .catch((error) => {
-    console.log("❌ MongoDB Connection Error:", error);
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
   });
 
-// 🔍 Test Route
-app.get("/", (req, res) => {
-  res.send("🎮 Game Zone Tournaments Server Running with MongoDB");
-});
-
-// 🚀 Start Server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log("🚀 Server running on port", PORT);
-});
+// Use PORT from Render
+const
+  
