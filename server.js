@@ -1,26 +1,17 @@
 const express = require("express");
-const mongoose = require("mongoose");
-
 const app = express();
+
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
 
-// Home route (test)
+// Test route
 app.get("/", (req, res) => {
   res.send("🎮 Game Zone Tournaments Server Running");
 });
 
-// MongoDB connection
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("MongoDB connected");
-  })
-  .catch((err) => {
-    console.error("MongoDB connection error:", err);
-  });
-
-// Use PORT from Render
-const
-  
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
