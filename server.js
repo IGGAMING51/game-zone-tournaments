@@ -7,9 +7,6 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-const authRoutes = require("./backend/auth");
-app.use("/api/auth", authRoutes);
-
 
 // Root route (Render health check)
 app.get("/", (req, res) => {
