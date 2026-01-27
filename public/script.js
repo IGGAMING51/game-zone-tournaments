@@ -31,6 +31,7 @@ async function login() {
   });
 
   const data = await res.json();
-  document.getElementById("loginMsg").innerText =
-    data.message || data.error;
+  document.getElementById("loginMsg").style.color =
+  res.ok ? "lightgreen" : "red";
+
 }
