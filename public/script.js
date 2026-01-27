@@ -1,8 +1,9 @@
-const BASE_URL = https://game-zone-tournaments.onrender.com/;
+const BASE_URL = "https://game-zone-tournaments.onrender.com/";
 
 // SIGNUP
 async function signup() {
-  const gameUid = document.getElementById("su_uid").value;
+  const gameUid =
+    document.getElementById("su_uid").value || "XXXXXXXXXX";
   const email = document.getElementById("su_email").value;
   const password = document.getElementById("su_pass").value;
 
