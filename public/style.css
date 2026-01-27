@@ -1,50 +1,64 @@
 body {
-  background: #0f172a;
+  background: radial-gradient(circle at top, #020617, #000);
   color: white;
   font-family: Arial, sans-serif;
 }
 
 .container {
-  width: 350px;
-  margin: 40px auto;
+  width: 360px;
+  margin: 60px auto;
   text-align: center;
 }
 
 h1 {
   color: #38bdf8;
+  text-shadow: 0 0 10px #38bdf8;
+}
+
+h3 {
+  color: #94a3b8;
 }
 
 .card {
   background: #020617;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #38bdf8;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #0ea5e9;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px #0ea5e9; }
+  to { box-shadow: 0 0 25px #38bdf8; }
 }
 
 input {
   width: 90%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 5px;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
   border: none;
 }
 
 button {
   width: 95%;
-  padding: 10px;
-  background: #38bdf8;
-  color: black;
+  padding: 12px;
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
 }
 
 button:hover {
-  background: #0ea5e9;
+  transform: scale(1.03);
 }
 
-p {
-  margin-top: 10px;
+.link {
+  margin-top: 15px;
+}
+
+a {
+  color: #38bdf8;
+  text-decoration: none;
 }
