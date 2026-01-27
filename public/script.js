@@ -1,5 +1,4 @@
 const BASE_URL = "https://game-zone-tournaments.onrender.com/";
-alert("JS LOADED");
 
 // SIGNUP
 async function signup() {
