@@ -1,20 +1,21 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  userId: {
+  gameUid: {
     type: String,
-    required: true,
-    unique: true,
-    length: 10
+    default: "XXXXXXXXXX"   // 🔹 default UID
   },
   email: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   password: {
     type: String,
     required: true
+  },
+  coins: {
+    type: Number,
+    default: 0
   }
 });
 
