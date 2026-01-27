@@ -1,65 +1,79 @@
 const express = require("express");
+const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
-const router = express.Router();
-
-/* SIGN UP */
+/* =====================
+   SIGNUP
+===================== */
 router.post("/signup", async (req, res) => {
   try {
-    const { userId, email, password } = req.body;
+    let { gameUid, email, password } = req.body;
 
-    if (!userId || !email || !password) {
-      return res.status(400).json({ message: "All fields required" });
+    // 🔹 Game UID default
+    if (!gameUid || gameUid.trim() === "") {
+      gameUid = "XXXXXXXXXX";
     }
 
-    if (userId.length !== 10) {
-      return res.status(400).json({ message: "User ID must be 10 digits" });
+    // 🔹 Game UID length check (if provided)
+    if (gameUid !== "XXXXXXXXXX") {
+      if (!/^\d{9,11}$/.test(gameUid)) {
+        return res.status(400).json({
+          error: "Game UID must be 9, 10, or 11 digits"
+        });
+      }
     }
 
-    const userExists = await User.findOne({ email });
-    if (userExists) {
-      return res.status(400).json({ message: "User already exists" });
+    // 🔹 Email already exists?
+    const emailExists = await User.findOne({ email });
+    if (emailExists) {
+      return res.status(400).json({ error: "Email already registered" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = new User({
-      userId,
+    const newUser = new User({
+      gameUid,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      coins: 0
     });
 
-    await user.save();
+    await newUser.save();
 
-    res.status(201).json({ message: "Signup successful" });
+    res.json({ message: "Signup successful 🎉" });
+
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
-/* LOGIN */
+/* =====================
+   LOGIN
+===================== */
 router.post("/login", async (req, res) => {
   try {
-    const { userId, email, password } = req.body;
+    const { gameUid, email, password } = req.body;
 
-    if (!userId || !email || !password) {
-      return res.status(400).json({ message: "All fields required" });
-    }
-
-    const user = await User.findOne({ email, userId });
+    const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ error: "User not found" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ error: "Wrong password" });
     }
 
-    res.json({ message: "Login successful" });
+    res.json({
+      message: "Login successful 🎮",
+      gameUid: user.gameUid,
+      coins: user.coins
+    });
+
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: "Server error" });
   }
 });
 
