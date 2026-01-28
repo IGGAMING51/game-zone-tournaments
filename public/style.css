@@ -1,70 +1,113 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
 body {
-  margin: 0;
   min-height: 100vh;
+  margin: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  font-family: Arial, sans-serif;
+  justify-content: center;
+  background: radial-gradient(circle at top, #0f2027, #000);
+  color: #fff;
 }
 
-.card {
+.glass-card {
   width: 90%;
-  max-width: 360px;
-  background: #0b1220;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 0 25px rgba(0, 255, 209, 0.4);
+  max-width: 380px;
+  padding: 32px 26px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 30px rgba(0, 255, 200, 0.35);
   text-align: center;
+  animation: float 4s ease-in-out infinite;
 }
 
-.card h1 {
-  color: #ffffff;
-  margin-bottom: 4px;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
-.card p {
+.glass-card h1 {
+  margin: 0;
+  letter-spacing: 4px;
+  color: #00ffd1;
+}
+
+.tagline {
+  font-size: 14px;
   color: #9ca3af;
-  margin-bottom: 20px;
+  display: block;
+  margin-bottom: 24px;
 }
 
-.input-group {
-  margin-bottom: 14px;
+.field {
+  position: relative;
+  margin-bottom: 18px;
 }
 
-input {
+.field input {
   width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #00ffd1;
-  background: #111827;
-  color: #ffffff;
+  padding: 14px 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  color: #fff;
   outline: none;
+  font-size: 14px;
 }
 
-input::placeholder {
-  color: #6b7280;
+.field label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+  transition: 0.3s;
+  background: transparent;
+}
+
+.field input:focus,
+.field input:valid {
+  border-color: #00ffd1;
+}
+
+.field input:focus + label,
+.field input:valid + label {
+  top: -8px;
+  font-size: 11px;
+  color: #00ffd1;
+  background: #000;
+  padding: 0 6px;
 }
 
 button {
   width: 100%;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 14px;
   border: none;
-  background: #00ffd1;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #00ffd1, #00aaff);
   color: #000;
-  font-weight: bold;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
   margin-top: 10px;
 }
 
-.login-text {
-  margin-top: 14px;
+button:hover {
+  opacity: 0.9;
+}
+
+.switch {
+  margin-top: 16px;
+  font-size: 13px;
   color: #9ca3af;
 }
 
-.login-text a {
+.switch a {
   color: #00ffd1;
   text-decoration: none;
 }
