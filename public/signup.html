@@ -2,48 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Join G-Zone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G-Zone Signup</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="card">
-  <h2>Welcome to G-Zone</h2>
-  <p>Become a Warrior</p>
+  <div class="glass-card">
+    <h1>G-ZONE</h1>
+    <span class="tagline">Enter the Arena</span>
 
-  <input type="text" id="gameName" placeholder="Game Name (Free Fire / BGMI / Minecraft)" />
-  <input type="text" id="gameUID" placeholder="Game UID (optional)" />
-  <input type="email" id="email" placeholder="Email" />
-  <input type="password" id="password" placeholder="Password" />
+    <form>
+      <div class="field">
+        <input type="text" required />
+        <label>Game Name</label>
+      </div>
 
-  <button onclick="signup()">Register</button>
+      <div class="field">
+        <input type="text" />
+        <label>Game UID (optional)</label>
+      </div>
 
-  <p class="msg" id="msg"></p>
+      <div class="field">
+        <input type="email" required />
+        <label>Email</label>
+      </div>
 
-  <p class="link">
-    Already a warrior?
-    <a href="login.html">Login</a>
-  </p>
-</div>
+      <div class="field">
+        <input type="password" required />
+        <label>Password</label>
+      </div>
 
-<script>
-async function signup() {
-  const gameName = document.getElementById("gameName").value;
-  const gameUID = document.getElementById("gameUID").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const msg = document.getElementById("msg");
+      <button>Create Account</button>
+    </form>
 
-  const res = await fetch("/api/auth/signup", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ gameName, gameUID, email, password })
-  });
-
-  const data = await res.json();
-  msg.innerText = data.message;
-}
-</script>
+    <p class="switch">
+      Already a warrior?
+      <a href="login.html">Login</a>
+    </p>
+  </div>
 
 </body>
 </html>
