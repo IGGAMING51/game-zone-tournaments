@@ -1,19 +1,35 @@
-document.getElementById("signupForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+const express = require("express");
+const router = express.Router();
+const User = require("../models/User");
 
-  const data = {
-    gameName: document.getElementById("gameName").value,
-    gameUid: document.getElementById("gameUid").value,
-    email: document.getElementById("email").value,
-    password: document.getElementById("password").value
-  };
+// SIGNUP API
+router.post("/signup", async (req, res) => {
+  try {
+    const { gameName, gameUid, email, password } = req.body;
 
-  if (!data.gameName || !data.email || !data.password) {
-    alert("Please fill all required fields");
-    return;
+    if (!gameName || !email || !password) {
+      return res.status(400).json({ message: "Missing fields" });
+    }
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
+    const user = new User({
+      gameName,
+      gameUid,
+      email,
+      password
+    });
+
+    await user.save();
+
+    res.status(201).json({ message: "Signup successful" });
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-
-  console.log("Signup Data:", data);
-
-  alert("Signup UI working! Backend next 🚀");
 });
+
+module.exports = router;
