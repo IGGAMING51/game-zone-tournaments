@@ -1,65 +1,54 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
   background: radial-gradient(circle, #0f2027, #203a43, #2c5364);
-  height: 100vh;
+  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  color: white;
 }
 
 .card {
-  background: #0b0f19;
+  background: #111;
   padding: 25px;
-  width: 320px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #00ffcc;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffcc;
+}
+
+h2 {
   text-align: center;
+  margin-bottom: 5px;
 }
 
-h1 {
-  color: #00ffcc;
+p {
+  text-align: center;
+  font-size: 14px;
 }
 
-.tag {
-  color: #aaa;
-  margin-bottom: 15px;
-}
-
-input, select {
+input {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 6px;
+  padding: 8px;
+  margin-top: 10px;
   border: none;
+  border-radius: 5px;
 }
 
 button {
   width: 100%;
+  margin-top: 15px;
   padding: 10px;
   background: #00ffcc;
   border: none;
+  border-radius: 5px;
   font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
 }
 
-button:hover {
-  background: #00ddb5;
-}
-
-.switch {
+.msg {
   margin-top: 10px;
-  color: #aaa;
+  text-align: center;
 }
 
-.switch a {
-  color: #00ffcc;
-  text-decoration: none;
-}
-
-#msg {
-  color: yellow;
-  font-size: 14px;
-  min-height: 18px;
+.link {
+  margin-top: 10px;
 }
