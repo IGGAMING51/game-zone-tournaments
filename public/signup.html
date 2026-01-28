@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>G-Zone | Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+  <h1>Welcome to G-Zone</h1>
+  <p class="tag">Become a Warrior</p>
+
+  <p id="msg"></p>
+
+  <form id="signupForm">
+    <input type="text" id="gameName" placeholder="Game Name" required>
+
+    <select id="gameType" required>
+      <option value="">Select Game</option>
+      <option>Free Fire</option>
+      <option>BGMI</option>
+      <option>COD</option>
+      <option>Minecraft</option>
+      <option>Other</option>
+    </select>
+
+    <input type="text" id="gameUID" placeholder="Game UID (optional)">
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <p class="switch">
+    Already a warrior?
+    <a href="login.html">Login</a>
+  </p>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>
