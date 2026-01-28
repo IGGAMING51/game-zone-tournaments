@@ -1,22 +1,23 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-  gameUid: {
+const UserSchema = new mongoose.Schema({
+  gameName: {
     type: String,
-    default: "XXXXXXXXXX"   // 🔹 default UID
+    required: true,
+  },
+  gameUID: {
+    type: String,
+    default: "XXXXXXXXXX",
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
-  coins: {
-    type: Number,
-    default: 0
-  }
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", UserSchema);
