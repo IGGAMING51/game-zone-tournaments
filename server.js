@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
 // Routes
-app.use("/api/auth", require("./routes/auth"));
+app.use("/api/auth", require("./backend/routes/auth"));
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
