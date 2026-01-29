@@ -1,22 +1,19 @@
-document.getElementById("signupForm").addEventListener("submit", function (e) {
+document.getElementById("signupForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const gameName = document.getElementById("gameName").value;
-  const gameUid = document.getElementById("gameUid").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  const data = {
+    gameName: gameName.value,
+    gameUid: gameUid.value,
+    email: email.value,
+    password: password.value
+  };
 
-  if (!gameName || !email || !password) {
-    alert("Please fill all required fields");
-    return;
-  }
-
-  console.log({
-    gameName,
-    gameUid,
-    email,
-    password
+  const res = await fetch("/api/auth/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
   });
 
-  alert("Signup UI working perfectly 🎮");
+  const result = await res.json();
+  alert(result.message || "Error");
 });
