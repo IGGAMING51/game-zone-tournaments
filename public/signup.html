@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>G-Zone Signup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box">
+  <h2>Welcome to <span>G-Zone</span></h2>
+  <p>Become a Warrior</p>
+
+  <form id="signupForm">
+    <select id="gameName" required>
+      <option value="">Select Game</option>
+      <option>Free Fire</option>
+      <option>BGMI</option>
+      <option>Other</option>
+    </select>
+
+    <input type="text" id="gameUID" placeholder="Game UID" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <p id="msg"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
