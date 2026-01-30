@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>G-Zone Signup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Welcome to <span>G-Zone</span></h1>
+    <p class="tagline">Become a Warrior</p>
+
+    <div class="note">
+      * Please enter correct details for verification
+    </div>
+
+    <form id="signupForm">
+      <label>Game Name</label>
+      <select id="game">
+        <option value="">Select Game</option>
+        <option>Free Fire</option>
+        <option>BGMI</option>
+        <option>Other</option>
+      </select>
+
+      <label>Game UID</label>
+      <input type="text" placeholder="Enter Game UID" required />
+
+      <label>Email</label>
+      <input type="email" placeholder="Enter Email" required />
+
+      <label>Password</label>
+      <input type="password" placeholder="Enter Password" required />
+
+      <button type="submit">Register</button>
+    </form>
+
+    <p class="login-text">
+      Already have an account? <a href="#">Login</a>
+    </p>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
